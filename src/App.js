@@ -1,57 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import React from "react";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import "./App.css";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import { Routes, Route } from "react-router";
+import CityList from "./components/CityList";
+import { Button } from "@material-ui/core";
+import City from "./components/City";
+import { Link } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Grid container className="App">
+      <Grid item xs={12}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              <Link to="/">
+                <Button>City editorials</Button>
+              </Link>
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Routes>
+          <Route path="/" element={<CityList />} />
+          <Route path="/cities/:id" element={<City />} />
+        </Routes>
+      </Grid>
+    </Grid>
   );
 }
 
